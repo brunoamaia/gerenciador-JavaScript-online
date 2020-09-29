@@ -25,7 +25,7 @@
   --color-primary-lighter: #9871F5;
   --color-secundary: #04D361;
   --color-secundary-dark: #04BF58;
-  --color-text-base: #6A6180;
+  --color-text-base: #000;
   --color-text-complement: #9C98A6;
   --color-text-in-primary: #D4C2FF;
   --color-text-title: #32264D;
@@ -41,28 +41,42 @@ body {
   background-image: var(--my-gradient);
 }
 header {
-  height: 80px;
   background-color: rgba(0, 0, 0, 0.1);
 }
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
 *                       Config for smartphone                        *
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
 header .content {
+  align-items: center;
   display: flex;
-  justify-content: space-around;
+  height: 80px;
+  justify-content: space-between;
 }
 .content .nav ul{
   display: flex;
   list-style: none;
 }
 .nav li {
-  padding: 0 10px;
+  padding: 0 30px;
 }
 .logo {
+  padding: 0 50px;
 }
+
+
+
+.header .content a {
+  color: var(--color-text-base);
+  font-family: 'Graduate', cursive;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
 
 section{
   min-height: 85vh;
 }
 
-
+footer {
+  text-align: center;
+}

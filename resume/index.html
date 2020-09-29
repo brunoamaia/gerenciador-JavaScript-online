@@ -32,7 +32,7 @@
       </nav>
 
       <div class="logo" >
-        <a href="/production/"> Produção </a>
+        <a href="/resume/"> Produção </a>
         <!-- <a href="#"><img src="" alt="logo"> </a> -->
       </div>
         
@@ -52,14 +52,14 @@
       <h1>Produção</h1>
       <p>Utilização: <span class="useproductiontext">80.00%</span> </p>
       <progress value="80" max="100" id="useproduction" >Progress: 80%</progress>
-      <p class="controlprogress">
+      <div class="buttonProgress">
         <button type="button" onclick="decrementproduction()">-</button>
         <button type="button" onclick="incrementproduction()">+</button>
-      </p>
+      </div>
       
       <p>Avisos importantes: <span class="warningproduction"></span> </p>
       
-      <!-- <p>Acompanhar processo</p> -->
+      <p>Acompanhar os processo</p>
     </div>
 
     <div class="order">
@@ -67,10 +67,12 @@
       <p>Total:  <span class="totalorder">50</span></p>
       <p>Sendo atendidos:  <span class="doingorder">20 => 40.00%</span></p>
       <progress value="40" max="100" id="useorder" >Progress: 40%</progress>
-      <p class="controloerder">
+      <div class="buttonProgress">
         <button type="button" onclick="decrementorder()">-</button>
         <button type="button"onclick="incrementorder()">+</button>
-      </p>
+      </div>
+
+      <p>Acompanhar os pedidos</p>
       <!-- <p>Em espera:  <span class="waitingorder"></span></p> -->
     </div>
 
@@ -78,18 +80,19 @@
       <h1>Estoque</h1>
       <p>Produtos:  <span class="textStokProduct">20.00%</span></p>
       <progress value="20" max="100" id="stokProduct" >Progress: 20%</progress>
-      <p class="controloerder">
+      <div class="buttonProgress">
         <button type="button" onclick="decrementStokProduct()">-</button>
         <button type="button"onclick="incrementStokProduct()">+</button>
-      </p>
+      </div>
 
       <p>Insumos:  <span class="textInputProduct">60.00%</span></p>
       <progress value="60" max="100" id="inputProduct" >Progress: 60%</progress>
-      <p class="controloerder">
+      <div class="buttonProgress">
         <button type="button" onclick="decrementInputProduct()">-</button>
         <button type="button"onclick="incrementInputProduct()">+</button>
-      </p>
+      </div>
 
+      <p>Acompanhar os insumos</p>
       <p>  <span class=""></span></p>
     </div>
 

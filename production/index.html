@@ -6,12 +6,13 @@
   
   <link rel = "icon" type = "image/png" href=""  sizes="16x16"/>
   <link rel = "apple-touch-icon" type = "image/png" href = ""/>
-  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="production.css">
   
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet"> 
 
-  <title>Meu gerenciador</title>
+  <title>Produção</title>
 </head>
 <body>
   <header class="header">
@@ -25,8 +26,8 @@
           <span class="nav-close" onclick="closenmenu()"> </span>
         </p> -->
         <ul>
-          <li> <a href="/" class="current"> Home </a> </li>
-          <li> <a href="/">login</a> </li>
+          <li> <a href="../" class="current"> Home </a> </li>
+          <li> <a href="#">login</a> </li>
         </ul>
       </nav>
 
@@ -45,29 +46,32 @@
 
 
   <section>
-    <div class="mainBanner">
+    <h1>Resumo do Sistema</h1>
 
+    <div class="production">
+      <h1>Produção</h1>
+      <p>Utilização: <span class="useproductiontext"></span> </p>
+      <progress value="80" max="100" id="useprogress" >Progress: 80%</progress>
+      <p class="controlprogress">
+        <button type="button" onclick="decrement()">-</button>
+        <button type="button"onclick="increment()">+</button>
+      </p>
+      
+      <p>Avisos importantes: <span class="warningproduction"></span> </p>
+      
+      <p>Acompanhar processo</p>
     </div>
 
-    <div class="contend">
-      <h1>Meu gerenciador</h1>
-
-      <p> Aplicação criada para treinar os conhecimentos adquiridos com JavaScript e aprender 
-        mais sobre Banco de Dados.
-      </p>
-      <p> O objetivo é criar plataforma que seja capaz de acompanhar/gerenciar toda uma estrutura produtiva. 
-        Serão implementadas soluções para gerenciar o estoque e lista de pedidos. 
-        Além de monitorar a produção em tempo real (ou algo próximo disso). 
-        Sendo então, uma plataforma que consegue fazer o gerenciamento completo da parte produtiva 
-        de uma empresa.
-      </p>
-      <p> Optei por utilizar JavaScript ao invés de algum framework, para ver quais serão os problemas 
-        que aparecerão, e então analisar por conta própria a eficiência dos frameworks.
-      </p>
-      <p> Primeiro será estruturado o Frontend, pois é a parte que estudei mais até então. 
-        Posteriormente, será criado o Backend juntamente com os ajustes que forem necessários no frontend.
-      </p>
+    <div class="order">
+      <h1>Pedidos</h1>
+      <p> </p>
     </div>
+
+    <div class="stok">
+      <h1>Estoque</h1>
+      <p> </p>
+    </div>
+
   </section>
 
 

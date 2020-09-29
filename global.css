@@ -28,7 +28,7 @@
   --color-text-base: #000;
   --color-text-complement: #9C98A6;
   --color-text-in-primary: #D4C2FF;
-  --color-text-title: #32264D;
+  --color-text-title: #043b07;
   --color-title-in-primary: #FFFFFF;
   
   --color-banner-top: #50fd50;
@@ -41,7 +41,7 @@ body {
   background-image: var(--my-gradient);
 }
 header {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
 *                       Config for smartphone                        *
@@ -51,6 +51,12 @@ header .content {
   display: flex;
   height: 80px;
   justify-content: space-between;
+}
+header .content a {
+  color: var(--color-text-base);
+  font-family: 'Graduate', cursive;
+  font-size: 1.2em;
+  font-weight: 700;
 }
 .content .nav ul{
   display: flex;
@@ -63,13 +69,22 @@ header .content {
   padding: 0 50px;
 }
 
-
-
-.header .content a {
+section {
+  margin: 0 auto;
+  width: 90vw;
   color: var(--color-text-base);
-  font-family: 'Graduate', cursive;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.2em;
-  font-weight: 700;
+}
+
+section h1 {
+  color: var(--color-text-title);
+  text-align: center;
+  padding: 15px 0;
+}
+section p {
+  text-align: justify;
+  text-indent: 2em;
 }
 
 
@@ -77,6 +92,12 @@ section{
   min-height: 85vh;
 }
 
-footer {
+footer p {
+  margin: 0 auto 20px;
+  width: 90vw;
+  color: var(--color-text-base);
+  font-family: 'Graduate', cursive;
+  font-size: 1.2em;
+  font-weight: 700;
   text-align: center;
 }

@@ -50,11 +50,11 @@
 
     <div class="production">
       <h1>Produção</h1>
-      <p>Utilização: <span class="useproductiontext">80%</span> </p>
-      <progress value="80" max="100" id="useprogress" >Progress: 80%</progress>
+      <p>Utilização: <span class="useproductiontext">80.00%</span> </p>
+      <progress value="80" max="100" id="useproduction" >Progress: 80%</progress>
       <p class="controlprogress">
-        <button type="button" onclick="decrement()">-</button>
-        <button type="button"onclick="increment()">+</button>
+        <button type="button" onclick="decrementproduction()">-</button>
+        <button type="button" onclick="incrementproduction()">+</button>
       </p>
       
       <p>Avisos importantes: <span class="warningproduction"></span> </p>
@@ -64,12 +64,21 @@
 
     <div class="order">
       <h1>Pedidos</h1>
-      <p> </p>
+      <p>Total:  <span class="totalorder">50</span></p>
+      <p>Sendo atendidos:  <span class="doingorder">20 => 40.00%</span></p>
+      <progress value="40" max="100" id="useorder" >Progress: 40%</progress>
+      <p class="controloerder">
+        <button type="button" onclick="decrementorder()">-</button>
+        <button type="button"onclick="incrementorder()">+</button>
+      </p>
+      <!-- <p>Em espera:  <span class="waitingorder"></span></p> -->
     </div>
 
     <div class="stok">
       <h1>Estoque</h1>
-      <p> </p>
+      <p>Produtos:  <span class=""></span></p>
+      <p>Insumos:  <span class=""></span></p>
+      <p>  <span class=""></span></p>
     </div>
 
   </section>

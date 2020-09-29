@@ -60,30 +60,59 @@ function incrementorder() {
 }
 
 
-let hwe = 80
-let text = window.document.querySelector(".")
-let progress = document.querySelector("#")
-function decrement() {
+let product = 20
+let textProduct = window.document.querySelector(".textStokProduct")
+let progressProduct = document.querySelector("#stokProduct")
+function decrementStokProduct() {
+  let temp = product - 5
+  if (temp > 0){
+    product -=5;
+    textProduct.innerHTML = `${product.toFixed(2)}%`
+    progressProduct.value = product
+  } else {
+    product = 1
+    textProduct.innerHTML = `${product.toFixed(2)}%`
+    progressProduct.value = product
+  }
+}
+function incrementStokProduct() {
+  let temp = product + 5
+  if (temp <= 100){
+    product +=5;
+    textProduct.innerHTML = `${product.toFixed(2)}%`
+    progressProduct.value = product
+  } else {
+    product = 100
+    textProduct.innerHTML = `${product.toFixed(2)}%`
+    progressProduct.value = product
+  }
+}
+
+
+let hwe = 60
+let text = window.document.querySelector(".textInputProduct")
+let progress = document.querySelector("#inputProduct")
+function decrementInputProduct() {
   let temp = hwe - 5
   if (temp > 0){
     hwe -=5;
-    text.innerHTML = `${hwe}%`
+    text.innerHTML = `${hwe.toFixed(2)}%`
     progress.value = hwe
   } else {
     hwe = 1
-    text.innerHTML = `${hwe}%`
+    text.innerHTML = `${hwe.toFixed(2)}%`
     progress.value = hwe
   }
 }
-function increment() {
+function incrementInputProduct() {
   let temp = hwe + 5
   if (temp <= 100){
     hwe +=5;
-    text.innerHTML = `${hwe}%`
+    text.innerHTML = `${hwe.toFixed(2)}%`
     progress.value = hwe
   } else {
     hwe = 100
-    text.innerHTML = `${hwe}%`
+    text.innerHTML = `${hwe.toFixed(2)}%`
     progress.value = hwe
   }
 }

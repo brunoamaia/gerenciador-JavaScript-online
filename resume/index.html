@@ -59,7 +59,7 @@
       
       <p>Avisos importantes: <span class="warningproduction"></span> </p>
       
-      <p>Acompanhar processo</p>
+      <!-- <p>Acompanhar processo</p> -->
     </div>
 
     <div class="order">
@@ -76,8 +76,20 @@
 
     <div class="stok">
       <h1>Estoque</h1>
-      <p>Produtos:  <span class=""></span></p>
-      <p>Insumos:  <span class=""></span></p>
+      <p>Produtos:  <span class="textStokProduct">20.00%</span></p>
+      <progress value="20" max="100" id="stokProduct" >Progress: 20%</progress>
+      <p class="controloerder">
+        <button type="button" onclick="decrementStokProduct()">-</button>
+        <button type="button"onclick="incrementStokProduct()">+</button>
+      </p>
+
+      <p>Insumos:  <span class="textInputProduct">60.00%</span></p>
+      <progress value="60" max="100" id="inputProduct" >Progress: 60%</progress>
+      <p class="controloerder">
+        <button type="button" onclick="decrementInputProduct()">-</button>
+        <button type="button"onclick="incrementInputProduct()">+</button>
+      </p>
+
       <p>  <span class=""></span></p>
     </div>
 

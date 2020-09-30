@@ -1,10 +1,33 @@
+:root {
+  --gradient-button: linear-gradient(125deg, var(--color-banner-bottom), var(--color-banner-top) 100%);
+}
+
 
 section > div {
   border: 3px solid #353535;
   padding: 10px 0 20px;
+  text-align: center;
 }
 .order, .stok {
   border-top: none;
+}
+
+.details {
+  background: var(--color-button-bakground);
+  border: none; /* 2px solid var(--color-button-border)*/
+  color: var(--color-text-button);
+  border-radius: 30px;
+  margin: 10px 0 15px;
+  padding: 5px -2px;
+  width: fit-content;
+  height: 50px;
+
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.3em;
+}
+.details a {
+  color: inherit;
+  padding: 10px 25px;
 }
 
 /* #* #* #* #* Progress bar *# *# *# *# */
@@ -38,14 +61,15 @@ progress::-webkit-progress-bar {
   margin: 0 auto 15px;
   text-indent: 0;
 }
-button {
+.buttonProgress .controlProgress {
   border: 0;
   background: #FFF;
   height: 40px;
   width: 40px;
   margin: 0 10px;
   line-height: 23px;
-  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.3em;
   color: #555;
   border-radius: 8px;
   box-shadow: inset 0 -2px 3px rgba(0,0,0,.4), 0 2px 5px rgba(0,0,0,0.5);

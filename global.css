@@ -15,7 +15,8 @@
   --color-background: lightgray;
   --color-box-base: #FFFFFF;
   --color-box-footer: #FAFAFC;
-  --color-button-text: #FFFFFF;
+  --color-button-bakground: #041324;
+  --color-button-border: #555;
   --color-input-background: #F8F8FC;
   --color-line-in-white: #E6E6F0;
   --color-primary: #8257E5;
@@ -26,10 +27,11 @@
   --color-secundary: #04D361;
   --color-secundary-dark: #04BF58;
   --color-text-base: #fefefe;
+  --color-text-button: #FFFFFF;
   --color-text-menu: #000;
   --color-text-complement: #9C98A6;
   --color-text-in-primary: #D4C2FF;
-  --color-text-title: #0c035e;
+  --color-text-title: #03045e;
   --color-title-in-primary: #FFFFFF;
   
   --color-banner-top: #0428c4;
@@ -95,7 +97,7 @@ section{
 }
 
 footer{
-  margin: 0 auto 20px;
+  margin: 20px auto;
   text-align: center;
 }
 footer p {

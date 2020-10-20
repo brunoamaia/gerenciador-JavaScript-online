@@ -5,13 +5,19 @@
   font-size: 1.2em;
 }
 
+.machines-container div {
+  border: 2px solid #333;
+  border-radius: 25px;
+  margin: 10px auto;
+}
 .machine img {
+  margin: 10px auto 0;
   width: 220px;
   height: auto;
 }
 
 .machine figcaption {
-  margin: 5px auto 30px;
+  margin: 5px auto 10px;
 }
 
 .machine span {

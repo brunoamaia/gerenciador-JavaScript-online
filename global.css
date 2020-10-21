@@ -67,10 +67,10 @@ header .content a {
   list-style: none;
 }
 .nav li {
-  padding: 0 30px;
+  padding: 0 15px;
 }
 .logo {
-  padding: 0 50px;
+  padding: 0 15px;
 }
 
 section {
@@ -113,4 +113,13 @@ footer .poweredBy {
   padding: 10px 0 0;
   width: 80vw;
   max-width: 300px;
+}
+
+@media (min-width: 400px) {
+  .nav li {
+    padding: 0 33px;
+  }
+  .logo {
+    padding: 0 40px;
+  }
 }

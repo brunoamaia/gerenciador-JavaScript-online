@@ -1,5 +1,13 @@
-section img {
+.error {
   margin: 50px auto;
   text-align: center;
   width: 90%;
+}
+
+.back img {
+  height: 0.8em;
+  transform: rotate(180deg);
+}
+.back a {
+  color: var(--color-text-base);
 }

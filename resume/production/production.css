@@ -50,16 +50,39 @@
 }
 
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
-*                            Config for PC                            *
+*                          Config for Tablet                         *
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
-@media (min-width: 780px) { 
-  .machine img {
-    width: 120px;
-    height: auto;
-  }
-  
+@media (min-width: 750px) { 
   .machines-container {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .machines-container div {
+    height: 270px;
+    margin: 5px;
+  }
+}
+
+@media (min-width: 1120px) { 
+  .machines-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .machines-container div {
+    height: 270px;
+  }
+}
+
+@media (min-width: 1420px) { 
+  .machines-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                            Config for PC                            *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (min-width: 1600px) { 
+  .machines-container {
     grid-template-columns: repeat(5, 1fr);
   }
+
 }

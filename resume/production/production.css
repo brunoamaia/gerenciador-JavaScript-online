@@ -5,6 +5,19 @@
   font-size: 1.2em;
 }
 
+.machines-container p{
+  text-align: center;
+}
+.machines-container a {
+  color: var(--color-text-base);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2em;
+}
+
+.machines-container a img {
+  height: 0.9em;
+}
+
 .machines-container div {
   border: 2px solid #333;
   border-radius: 25px;

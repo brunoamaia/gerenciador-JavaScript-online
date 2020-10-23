@@ -14,14 +14,9 @@ body {
   width: 100vw;
 }
 
-section {
-  display: flexbox;
-  align-items: center;
-  justify-content: center;
-}
-
 .background-image img {
   position: absolute;
+  z-index: -1;
 }
 .background-image-01 {
   left: 0;
@@ -32,4 +27,30 @@ section {
   right: 0;
   top: 0;
   height: 100%;
+}
+
+section {
+  position: relative;
+  text-align: center;
+  vertical-align: center;
+}
+
+.login-container {
+  /*border: 2px solid #ccc;*/
+  display: flex;
+  flex: 1;
+  margin: 10% auto 0;
+}
+.login-container div {
+  width: 800px;
+}
+
+
+.ilustration img {
+  width: 600px
+}
+
+.login-screen {
+  background-color: #EFB92E;
+  border-radius: 30px;
 }

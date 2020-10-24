@@ -108,3 +108,12 @@ section {
   font-family: 'Nunito', sans-serif;
   font-size: 1.5em;
 }
+
+.alert button {
+  width: 200px;
+  height: 40px;
+
+  border: 1px solid #393;
+  border-radius: 10px;
+  background-color: #7CB441;
+}

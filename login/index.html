@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet"> 
 
-  <title>Meu gerenciador</title>
+  <title>Login</title>
 </head>
 <body>
   
@@ -26,20 +26,35 @@
         <h1>login</h1>
         <p>bem vindo ao parara</p>
         <div class="field-container">
-          <div class="user"> <span> Usuário </span>  </div>
-          <div class="password"> <span> Senha </span> </div>
+          <div class="user-container">
+            <!-- <label for="user"> <span> Usuário: </span> </label> -->
+            <textarea id="user" name="user" rows="1" cols="40"> Usuário: </textarea>
+          </div>
+
+          <div class="password-container"> 
+            <!-- <label for="password"> <span> Senha: </span> </label> -->
+            <textarea id="password" name="password" rows="1" cols="40">  Senha: </textarea>
+          </div>
+
+          <button type="button" OnClick="aviso()"> <span>Acessar</span> </button>
         </div>
 
+        <p>Não tem conta ainda? </p>
+        <a href="#" OnClick="aviso()"> <p>Clique aqui e se registre</p> </a>
+        <div class="alert">
+          <span> Não é possível fazer login nem se cadastrar. <br>
+          O banco de dados ainda não foi criado/conectado</span>
         </div>
       </div>
+
     </div>
 
+    <div class="background-image">
+      <img class="background-image-01" src="../src/img/fundo-01.svg" alt="">
+      <img class="background-image-02" src="../src/img/fundo-02.svg" alt="">
+    </div>
   </section>
 
-  <div class="background-image">
-    <img class="background-image-01" src="../src/img/fundo-01.svg" alt="">
-    <img class="background-image-02" src="../src/img/fundo-02.svg" alt="">
-  </div>
 
   <script src="script.js"></script>
 </body>

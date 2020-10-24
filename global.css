@@ -34,8 +34,8 @@
   --color-text-title: #03045e;
   --color-title-in-primary: #FFFFFF;
   
-  --color-banner-top: #0428c4;
-  --color-banner-bottom: #5ef8b0;
+  --color-banner-top: #3E44F4;
+  --color-banner-bottom: #009BA3;
   --my-gradient: linear-gradient(35deg, var(--color-banner-top), var(--color-banner-bottom) 100%);
   /*--my-gradient: radial-gradient(circle, var(--color-banner-bottom), var(--color-banner-top));*/
 }

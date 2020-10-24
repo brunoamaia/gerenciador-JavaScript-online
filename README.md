@@ -5,4 +5,6 @@ Serão utilizadas as seguintes ferramentas: JavaScript, HTML5, CSS3 e algum Banc
 
 O principal intuito, é verificar o que pode ser feito sem a utilização de frameworks. 
 Provavelmente terá grandes problemas, mas o desafio é superá-los.
+
+ O funcionamento do projeto pode ser observado <a href="https://brunoamaia.github.io/gerenciador-JavaScript-online/"> cliando aqui.</a>
  

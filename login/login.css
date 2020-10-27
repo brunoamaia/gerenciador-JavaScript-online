@@ -72,7 +72,7 @@ section {
   font-size: 2em;
   font-weight: 700;
   
-  margin: 40px auto 20px;
+  margin: 30px auto 20px;
 }
 .login-screen p {
   color: var(--color-text-base);
@@ -95,12 +95,16 @@ section {
   font-size: 1.1em;
 }
 .field-container input {
-  height: 30px;
+  height: 40px;
   width: 280px;
   margin: 0;
 
   border: none;
   border-radius: 20px;
+
+  padding: 0 15px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1em;
 }
 
 .form-button {

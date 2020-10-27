@@ -26,17 +26,22 @@
         <h1>login</h1>
         <p>bem vindo ao parara</p>
         <div class="field-container">
-          <div class="user-container">
-            <!-- <label for="user"> <span> Usuário: </span> </label> -->
-            <textarea id="user" name="user" rows="1" cols="40"> Usuário: </textarea>
-          </div>
 
-          <div class="password-container"> 
-            <!-- <label for="password"> <span> Senha: </span> </label> -->
-            <textarea id="password" name="password" rows="1" cols="40">  Senha: </textarea>
-          </div>
-
-          <button type="button" OnClick="aviso()"> <span>Acessar</span> </button>
+          <form action="">
+            <div class="user-container">
+              <label for="user">Usuário:</label>
+              <input type="text" id="user" name="user">
+            </div>
+            
+            <div class="password-container">
+              <label for="password">Senha:</label>
+              <input type="text" id="password" name="password">
+            </div>
+            
+            <div class="form-button">
+              <input type="submit" value="Acessar" class="form-button" OnClick="aviso()">
+            </div>
+          </form>
         </div>
 
         <p>Não tem conta ainda? </p>

@@ -71,29 +71,52 @@ section {
   font-family: 'Graduate', cursive;
   font-size: 2em;
   font-weight: 700;
+  
+  margin: 40px auto 20px;
 }
 .login-screen p {
   color: var(--color-text-base);
   font-family: 'Nunito', sans-serif;
   font-size: 1.2em;
 }
-.field-container span {
+.login-screen p:first-of-type {
+  margin: 0 auto 25px;
+}
+
+.field-container form div {
+  display: grid; 
+  grid-template-columns: 4fr 5fr;
+  align-items: center;
+  margin: 10px 120px;
+}
+.field-container label {
+  color: var(--color-text-base);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1em;
+}
+.field-container input {
+  height: 30px;
+  width: 280px;
+  margin: 0;
+
+  border: none;
+  border-radius: 20px;
+}
+
+.form-button {
+  display: block !important;
+  margin: 0 auto;
+}
+.form-button input{
+  border: 1px solid #ccc !important;
+  background-color: #00B2BC;
+
   color: var(--color-text-base);
   font-family: 'Nunito', sans-serif;
   font-size: 1.2em;
-}
-
-.field-container button {
-  width: 400px;
-  height: 40px;
-
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  background-color: #00B2BC;
-}
-.field-container button span {
-  font-size: 1.6em;
   font-weight: 700;
+
+  margin: 15px auto;
 }
 
 

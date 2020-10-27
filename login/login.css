@@ -14,8 +14,12 @@ body {
   width: 100%;
 }
 
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                      Config for PC (1300 - 4k)                      *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
 .background-image img {
   position: absolute;
+  height: 100vh;
   margin: 0;
   padding: 0;
   z-index: -1;
@@ -135,7 +139,6 @@ section {
   font-family: 'Nunito', sans-serif;
   font-size: 1.5em;
 }
-
 .alert button {
   width: 200px;
   height: 40px;
@@ -143,4 +146,39 @@ section {
   border: 1px solid #393;
   border-radius: 10px;
   background-color: #7CB441;
+
+  margin: 0 auto 20px;
+}
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                      Config for PC (1000 - 1300)                   *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (max-width: 1300px) {
+  .login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    margin: 10% auto;
+  }
+  .login-container > div {
+    height: auto;
+    width: calc(100vw * 0.4);
+  }
+
+  .ilustration {
+    margin: 0 30px 0 0;
+  }
+  .ilustration img {
+    width: calc(100vw * 0.4);
+  }
+
+  .field-container form div {
+    grid-template-columns: 1fr 3fr;
+    margin: 10px 10%;
+  }
+
+  .field-container input {
+    width: 250px;
+  }
+
 }

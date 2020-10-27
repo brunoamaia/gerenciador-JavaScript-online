@@ -182,3 +182,57 @@ section {
   }
 
 }
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                          Config for Tablet                         *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (max-width: 1000px) {
+  .ilustration {
+    display: none;
+  }
+
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+  .login-container > div {
+    height: auto;
+    width: calc(100vw * 0.6);
+  }
+}
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                      Config for smartphone                         *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (max-width: 650px) {
+  .login-container > div {
+    height: auto;
+    width: 80vw;
+  }
+
+  .field-container form div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10%;
+  }
+
+  .field-container input {
+    width: 60vw;
+  }
+
+  .alert button {
+    width: 60vw;
+  }
+}
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                   Config for small smartphone                      *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (max-width: 400px) {
+  .background-image img {
+    display: none;
+  }
+
+  .login-container {
+    font-size: 0.9em;
+  }
+}

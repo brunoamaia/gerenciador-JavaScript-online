@@ -3,6 +3,8 @@ const consign = require('consign');
 
 consign()
   .then('./config/middlewares.ts')
+  .then('./api')
+  .then('./config/routes.ts')
   .into(app)
 
 

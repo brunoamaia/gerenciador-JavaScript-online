@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsnd --transpile-only  --ignore-watch node_modules --respawn src/server.ts",
     "dev": "ts-node-dev --transpile-only  --ignore-watch node_modules index.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
     "knex:migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback"
   },
@@ -21,6 +22,7 @@
     "body-parser": "^1.19.0",
     "consign": "^0.1.6",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.21.12"
   }
 }

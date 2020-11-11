@@ -1,4 +1,4 @@
-const config = require('../knexfile.ts')
+const config = require('../knexfile')
 const knex = require('knex')(config)
 
 module.exports = knex

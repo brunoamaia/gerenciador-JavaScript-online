@@ -1,10 +1,6 @@
 // Update with your settings.
 const { data } = require('./.env')  // informações de conexão com o BD
 
-import { createConnection } from 'typeorm'
-
-createConnection()
-
 module.exports = {
   client: 'postgresql',
   connection: data,

@@ -8,7 +8,6 @@ consign()
 .then('./config/middlewares.ts')
 .then('./api')
 .then('./config/routes.ts')
-.then('./database/connection.ts')   // Conexão com o banco de dados (tem que adaptar)
 .into(app)
 
 

@@ -130,3 +130,40 @@
   margin: 0;
   padding: 0;
 }
+
+
+
+@media (min-width: 768px) {
+  .dashboard-resume {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    grid-gap: 30px;
+  }
+
+  .dashboard-resume .data {
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .dashboard-resume {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 0;
+  }
+
+  .dashboard-resume .data {
+    margin: 0 15px;
+    padding: 0;
+  }
+
+  .dashboard-resume .data:first-child {
+    margin-left: 0;
+  }
+  .dashboard-resume .data:last-child {
+    margin-right: 0;
+  }
+
+}

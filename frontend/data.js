@@ -1,62 +1,75 @@
-dataProduction = `{
-  "production": {
-    "month": {
-      "January": 2500,
-      "February": 5000,
-      "March": 8000,
-      "April": 10000,
-      "May": 14000,
-      "June": 17000,
-      "July": 20000,
-      "August": 22000,
-      "September": 25000,
-      "October": 28000,
-      "November": 30000,
-      "December": 30000
-    }
-  },
-  "request": {
-    "January": 0,
-      "February": 10000,
-      "March": 5000,
-      "April": 15000,
-      "May": 10000,
-      "June": 20000,
-      "July": 15000,
-      "August": 25000,
-      "September": 20000,
-      "October": 30000,
-      "November": 25000,
-      "December": 35000
-  },
+dataProduction = `
+{
+  "months": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
+  "production": [
+    2500,
+    5000,
+    8000,
+    10000,
+    14000,
+    17000,
+    20000,
+    22000,
+    25000,
+    28000,
+    30000,
+    30000
+  ],
+  "request": [
+    0,
+    10000,
+    5000,
+    15000,
+    10000,
+    20000,
+    15000,
+    25000,
+    20000,
+    30000,
+    25000,
+    35000
+  ],
   "inventory": {
-    "production": {
-      "January": 2500,
-      "February": -2500,
-      "March": 500,
-      "April": -4500,
-      "May": -500,
-      "June": -3500,
-      "July": 1500,
-      "August": -1500,
-      "September": 3500,
-      "October": 1500,
-      "November": 6500,
-      "December": 1500 
-    },
-    "suply": {
-      "January": 0.7,
-      "February": 0.2,
-      "March": 0.3,
-      "April": 0.4,
-      "May": 0.3,
-      "June": 0.5,
-      "July": 0.1,
-      "August": 0.4,
-      "September": 0.3,
-      "October": 0.5,
-      "November": 0.4,
-      "December": 0.3
-    }
+    "production": [
+      2500,
+      -2500,
+      500,
+      -4500,
+      -500,
+      -3500,
+      1500,
+      -1500,
+      3500,
+      1500,
+      6500,
+      1500
+    ],
+    "supply": [
+      0.7,
+      0.2,
+      0.3,
+      0.4,
+      0.3,
+      0.5,
+      0.1,
+      0.4,
+      0.3,
+      0.5,
+      0.4,
+      0.3
+    ]
   }
 }`

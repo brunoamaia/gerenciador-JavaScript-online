@@ -1,3 +1,13 @@
+// import data from "json"
+var data = JSON.parse(dataProduction)
+
+// break the variable
+const month = data.months
+const orderData = data.request
+const produced = data.production
+const inventory = data.inventory.production
+const supply = data.inventory.supply
+
 function resized() {
   drawGraphicOrder()
   dimensions.width = window.innerWidth * 0.9

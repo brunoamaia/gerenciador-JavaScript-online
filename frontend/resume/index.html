@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel = "icon" type = "image/png" href=""  sizes="16x16"/>
-  <link rel = "apple-touch-icon" type = "image/png" href = ""/>
+  <link rel = "icon" type = "image/png" href="https://brunoamaia.github.io/src/tillteBar.png"  sizes="16x16"/>
+  <link rel = "apple-touch-icon" type = "image/png" href = "https://brunoamaia.github.io/src/tillteBar.png"/>
 
   <link rel="stylesheet" href="../global.css">
   <link rel="stylesheet" href="resume.css">
@@ -96,10 +96,12 @@
           <div class="graphic-title">
             <p>Histórico dos pedidos</p>
             <div class="control">
-              |-|
+              <img src="../src/img/icons/more-vertical.svg" alt="">
             </div>
           </div>
-          <div class="graphic-order-history"></div>
+          <div class="graphic-order-history">
+            <canvas id="graphic-order"></canvas>
+          </div>
         </div>
       </div>
     </div>
@@ -169,7 +171,9 @@
     </a>
   </footer>
 
+  
   <script src="script.js"></script>
+
   <script src="dashboard.js"></script>
 
 </body>

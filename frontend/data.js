@@ -1,4 +1,4 @@
-{
+dataProduction = `{
   "production": {
     "month": {
       "January": 2500,
@@ -59,4 +59,4 @@
       "December": 0.3
     }
   }
-}
+}`

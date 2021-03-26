@@ -58,15 +58,15 @@ function resizeGraphic() {
 }
 
 function xAxis() {
-  context.strokeStyle = '#FAFAFA'
+  context.strokeStyle = '#FFF'
   context.beginPath();
   context.moveTo(graphArea.xmin, graphArea.ymin);
   context.lineTo(graphArea.xmax+15, graphArea.ymin);
   context.stroke();
 }
 
-function xlabel(array, lines) {
-  context.fillStyle = '#FAFAFA'
+function xlabel(array, lines, grid = true) {
+  context.fillStyle = '#FFF'
   context.textAlign = "start"
   context.font = '14px lighter Nunito';
 
@@ -92,7 +92,17 @@ function xlabel(array, lines) {
   for (let i = 0; i <= lines; i++) {
     let value = (isfloat) ? label[i-1].toFixed(2) : label[i]
     context.fillText(`$ ${value}`, graphArea.xini, (graphArea.ymin-yjump*i)+7, maxWidth);
+    
+    if (grid) {
+      context.beginPath();
+      context.setLineDash([5, 15]);
+      context.moveTo(graphArea.xmin, graphArea.ymin-yjump*i);
+      context.lineTo(graphArea.xmax, graphArea.ymin-yjump*i);
+      context.stroke();
+    }
   }
+  context.setLineDash([]);
+
 
 }
 
@@ -104,7 +114,7 @@ function yAxis() {
   context.stroke();
 }
 
-function ylabel(array) {
+function ylabel(array, grid = true) {
   // context.fillStyle = '#FAFAFA'
   context.textAlign = "center"
   context.font = '14px lighter Nunito';
@@ -115,7 +125,16 @@ function ylabel(array) {
   // context.rotate(-45 * Math.PI / 180);
   for (let i = 0; i < array.length; i++) {
     context.fillText(array[i].slice(0, 3), xnormalized(array, i), graphArea.yini, 20);
+
+    if (grid) {
+      context.beginPath();
+      context.setLineDash([5, 15]);
+      context.moveTo(xnormalized(array, i), graphArea.ymin);
+      context.lineTo(xnormalized(array, i), graphArea.ymax);
+      context.stroke();
+    }
   }
+  context.setLineDash([]);
   // context.rotate(45 * Math.PI / 180);
   //context.setTransform(1, 0, 0, 1, 0, 0);
 }

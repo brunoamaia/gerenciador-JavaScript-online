@@ -4,6 +4,14 @@
   --dashboard-color2: #00B2BC;
   --dashboard-color3: #EFB92E;
   --dashboard-background: #043946;
+  
+  --dashboard-title-background: #095479;
+  --dashboard-control-background: linear-gradient(180deg, var(--dashboard-title-background), var(--dashboard-color2) 150%);
+  --dashboard-control-on: #7ff006;
+  --dashboard-control-off: #9c0a0a;
+
+
+
 }
 
 .dashboard p {
@@ -107,12 +115,64 @@
   justify-content: space-between;
 
 
-  background-color: #095479;
+  background-color: var(--dashboard-title-background);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   padding: 0 20px;
   height: 50px;
   width: 100%;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  
+  padding: 10px 5px 10px 25px;
+  cursor: pointer;
+}
+
+.control .enable {
+  display: none;
+  width: 150px;
+}
+
+.control .enable > div {
+  display: flex;
+  align-items: center;
+}
+
+.enable .markA,
+.enable .markB {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: var(--dashboard-control-off);
+  margin-left: 10px;
+}
+
+.enable .markA.on,
+.enable .markB.on {
+  background-color: var(--dashboard-control-on);
+}
+
+.control .enable.show {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+
+  height: 50px;
+  width: 150px;
+  background-image: var(--dashboard-control-background);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.control-menu.show {
+  z-index: 1;
 }
 
 .graphic-order-history {

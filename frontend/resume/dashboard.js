@@ -54,11 +54,14 @@ function updateSizeGraph() {
 
 function resizeGraphic() {
   graphicOrder.height = dimensions.height
-  graphicOrder.width = dimensions.width
+  graphicOrder.width = dimensions.width-10
 }
 
 function xAxis() {
   context.strokeStyle = '#FFF'
+  context.lineWidth = 2;
+  context.lineCap = 'round';
+  
   context.beginPath();
   context.moveTo(graphArea.xmin, graphArea.ymin);
   context.lineTo(graphArea.xmax+15, graphArea.ymin);
@@ -68,7 +71,7 @@ function xAxis() {
 function xlabel(array, lines, grid = true) {
   context.fillStyle = '#FFF'
   context.textAlign = "start"
-  context.font = '14px lighter Nunito';
+  context.font = '14px Nunito';
 
   let max = Math.max(...array)
   let residue = max%5;
@@ -91,9 +94,9 @@ function xlabel(array, lines, grid = true) {
 
   for (let i = 0; i <= lines; i++) {
     let value = (isfloat) ? label[i-1].toFixed(2) : label[i]
-    context.fillText(`$ ${value}`, graphArea.xini, (graphArea.ymin-yjump*i)+7, maxWidth);
+    context.fillText(`$ ${value}`, graphArea.xini, (graphArea.ymin-yjump*i)+5, maxWidth);
     
-    if (grid) {
+    if (grid && i>0) {
       context.beginPath();
       context.setLineDash([5, 15]);
       context.moveTo(graphArea.xmin, graphArea.ymin-yjump*i);
@@ -117,16 +120,14 @@ function yAxis() {
 function ylabel(array, grid = true) {
   // context.fillStyle = '#FAFAFA'
   context.textAlign = "center"
-  context.font = '14px lighter Nunito';
+  context.font = '14px Nunito';
 
   let jump = (graphArea.xmax - graphArea.xini - (array.length*5))/array.length
 
-  // context.arc(0, 0, 5, 0, 2 * Math.PI);
-  // context.rotate(-45 * Math.PI / 180);
   for (let i = 0; i < array.length; i++) {
-    context.fillText(array[i].slice(0, 3), xnormalized(array, i), graphArea.yini, 20);
+    context.fillText(array[i].slice(0, 3), xnormalized(array, i), graphArea.yini);
 
-    if (grid) {
+    if (grid && i>0) {
       context.beginPath();
       context.setLineDash([5, 15]);
       context.moveTo(xnormalized(array, i), graphArea.ymin);
@@ -135,12 +136,12 @@ function ylabel(array, grid = true) {
     }
   }
   context.setLineDash([]);
-  // context.rotate(45 * Math.PI / 180);
-  //context.setTransform(1, 0, 0, 1, 0, 0);
 }
 
 function drawLine(array) {
   context.strokeStyle = '#EFB92E'
+  context.lineWidth = 5;
+  context.lineCap = 'round';
 
   for (let i = 0; i<month.length-1; i++) {
     context.beginPath();
@@ -150,15 +151,51 @@ function drawLine(array) {
   }
 }
 
+var gridx= true
+var gridy = false
+
 function drawGraphicOrder() {
   resizeGraphic()
 
   xAxis()
-  xlabel(orderData, 5)
+  xlabel(orderData, 5, gridx)
   yAxis()
-  ylabel(month)
+  ylabel(month, gridy)
   drawLine(orderData)
-
 }
 
 drawGraphicOrder()
+
+
+var showControlElements = false
+function handleEnableElements() {
+  showControlElements = !showControlElements
+  if (showControlElements) {
+    window.document.querySelector('.enable').classList.add('show')
+    window.document.querySelector('.control-menu').classList.add('show')
+  } else {
+    window.document.querySelector('.enable').classList.remove('show')
+    window.document.querySelector('.control-menu').classList.remove('show')
+  }
+}
+
+function handleChangeGridH() {
+  gridx = !gridx
+  drawGraphicOrder()
+  if (gridx) {
+    window.document.querySelector('.markA').classList.add('on')
+  } else {
+    window.document.querySelector('.markA').classList.remove('on')
+  }
+}
+
+function handleChangeGridV() {
+  gridy = !gridy
+  drawGraphicOrder()
+  if (gridy) {
+    window.document.querySelector('.markB').classList.add('on')
+  } else {
+    window.document.querySelector('.markB').classList.remove('on')
+  }
+}
+

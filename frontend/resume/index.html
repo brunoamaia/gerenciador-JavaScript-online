@@ -47,7 +47,7 @@
   </header>
 
   <section class="dashboard">
-    <h1>Painel de vizualização</h1>
+    <h1>Painel de vizualização (V.2)</h1>
     <div class="dashboard-container">
       <div class="dashboard-resume">
         <div class="data">
@@ -95,10 +95,25 @@
         <div class="order-history">
           <div class="graphic-title">
             <p>Histórico dos pedidos</p>
-            <div class="control">
-              <img src="../src/img/icons/more-vertical.svg" alt="">
+            <buttom class="control">
+              <div class="enable">
+                <div class="element" onclick="handleChangeGridH()">
+                  <p>Grid H</p>
+                  <div class="markA on"></div>
+                </div>
+                <div class="element" onclick="handleChangeGridV()">
+                  <p>Grid V</p>
+                  <div class="markB"></div>
+                </div>
+              </div>
+              <img
+                class="control-menu"
+                onclick="handleEnableElements()"
+                src="../src/img/icons/more-vertical.svg"
+                alt=""
+              >
             </div>
-          </div>
+          </button>
           <div class="graphic-order-history">
             <canvas id="graphic-order"></canvas>
           </div>
@@ -108,7 +123,7 @@
   </section>
 
   <section>
-    <h1>Resumo do Sistema</h1>
+    <h1>Resumo do Sistema (V.1)</h1>
 
     <div class="production">
       <button class="details"> <a href="./production/"> Produção </a>  </button>

@@ -27,13 +27,13 @@ const graphArea = {
   ymax: dimensions.height * 0.1
 }
 
-function xnormalized(position) {
-  let value = graphArea.xmin + (position * (graphArea.xmax-graphArea.xmin))/(orderData.length-1)
+function xnormalized(array, position) {
+  let value = graphArea.xmin + (position * (graphArea.xmax-graphArea.xmin))/(array.length-1)
   return value
 } 
 
-function ynormalized(position) {
-  let value = graphArea.ymin - (orderData[position] * (graphArea.ymin-graphArea.ymax))/Math.max(...orderData)
+function ynormalized(array, position) {
+  let value = graphArea.ymin - (array[position] * (graphArea.ymin-graphArea.ymax))/Math.max(...array)
   return value 
 }
 
@@ -73,13 +73,13 @@ function yAxis() {
   context.stroke();
 }
 
-function drawLine() {
+function drawLine(array) {
   context.strokeStyle = '#EFB92E'
 
   for (let i = 0; i<month.length-1; i++) {
     context.beginPath();
-    context.moveTo(xnormalized(i), ynormalized(i));
-    context.lineTo(xnormalized(i+1), ynormalized(i+1));
+    context.moveTo(xnormalized(array, i), ynormalized(array, i));
+    context.lineTo(xnormalized(array, i+1), ynormalized(array, i+1));
     context.stroke();
   }
 }
@@ -89,7 +89,7 @@ function drawGraphicOrder() {
 
   xAxis()
   yAxis()
-  drawLine()
+  drawLine(orderData)
 
   setTimeout(drawGraphicOrder, 300)
 }

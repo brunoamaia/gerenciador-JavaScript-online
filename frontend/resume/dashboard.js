@@ -61,14 +61,14 @@ function xAxis() {
   context.strokeStyle = '#FAFAFA'
   context.beginPath();
   context.moveTo(graphArea.xmin, graphArea.ymin);
-  context.lineTo(graphArea.xmax, graphArea.ymin);
+  context.lineTo(graphArea.xmax+15, graphArea.ymin);
   context.stroke();
 }
 
 function xlabel(array, lines) {
   context.fillStyle = '#FAFAFA'
   context.textAlign = "start"
-  context.font = '14px Nunito';
+  context.font = '14px lighter Nunito';
 
   let max = Math.max(...array)
   let residue = max%5;
@@ -96,13 +96,28 @@ function xlabel(array, lines) {
 
 }
 
-
 function yAxis() {
-  context.strokeStyle = '#000'
+  // context.strokeStyle = '#FAFAFA'
   context.beginPath();
   context.moveTo(graphArea.xmin, graphArea.ymin);
   context.lineTo(graphArea.xmin, graphArea.ymax-14);
   context.stroke();
+}
+
+function ylabel(array) {
+  // context.fillStyle = '#FAFAFA'
+  context.textAlign = "center"
+  context.font = '14px lighter Nunito';
+
+  let jump = (graphArea.xmax - graphArea.xini - (array.length*5))/array.length
+
+  // context.arc(0, 0, 5, 0, 2 * Math.PI);
+  // context.rotate(-45 * Math.PI / 180);
+  for (let i = 0; i < array.length; i++) {
+    context.fillText(array[i].slice(0, 3), xnormalized(array, i), graphArea.yini, 20);
+  }
+  // context.rotate(45 * Math.PI / 180);
+  //context.setTransform(1, 0, 0, 1, 0, 0);
 }
 
 function drawLine(array) {
@@ -122,6 +137,7 @@ function drawGraphicOrder() {
   xAxis()
   xlabel(orderData, 5)
   yAxis()
+  ylabel(month)
   drawLine(orderData)
 
   setTimeout(drawGraphicOrder, 3000)

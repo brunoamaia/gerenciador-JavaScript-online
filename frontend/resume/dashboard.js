@@ -159,7 +159,6 @@ function drawGraphicOrder() {
   ylabel(month)
   drawLine(orderData)
 
-  setTimeout(drawGraphicOrder, 3000)
 }
 
 drawGraphicOrder()

@@ -1,0 +1,288 @@
+:root {
+  --login-background-main: #00B2BC;
+  --login-background-card: #EFB92E;
+  --login-text-primary: #000;
+  --login-text-alert: #ff2a2a;
+  
+
+}
+
+.login-modal > div {
+  border: none;
+}
+
+.login-modal {
+  position: fixed;
+}
+
+.login-modal.enable {
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
+.login-container {
+  position: relative;
+  background-color: var(--login-background-main);
+  border-radius: 30px;
+  height: 80vh;
+  width: 80%;
+}
+
+.close {
+  position: absolute;
+  top: calc(10vh - 30px);
+  right: calc(10% - 30px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--login-background-card);
+  padding: 15px;
+  height: 60px;
+  width: 60px;
+  margin: 0;
+  border-radius: 50%;
+  text-align: center;
+  
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                      Config for PC (1600 - 4k)                      *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: calc( (100vh - 500px)/2) auto;
+}
+.login-container > div {
+  height: 500px;
+  width: 600px;
+}
+
+.ilustration {
+  display: flex;
+  flex-direction: row;
+  margin: 0 20px;
+}
+.ilustration img {
+  width: 600px
+}
+
+.login-screen {
+  background-color: var(--login-background-card);
+  border-radius: 30px;
+  text-align: center;
+}
+
+.login-screen h1 {
+  color: var(--login-text-primary);
+  font-family: 'Graduate', cursive;
+  font-size: 2em;
+  font-weight: 700;
+  
+  margin: 30px auto 10px;
+  padding: 0;
+}
+.login-screen p {
+  color: var(--login-text-primary);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.0em;
+  text-align: center;
+  text-indent: 0;
+}
+.login-screen p:first-of-type {
+  margin: 10px auto 15px;
+}
+
+.field-container form div {
+  display: grid; 
+  grid-template-columns: 4fr 5fr;
+  align-items: center;
+  margin: 10px 120px;
+}
+.field-container label {
+  color: var(--login-text-primary);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1em;
+}
+.field-container input {
+  height: 40px;
+  width: 280px;
+  margin: 0;
+
+  border: none;
+  border-radius: 20px;
+
+  padding: 0 15px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1em;
+}
+
+.form-button {
+  display: block !important;
+  margin: 0 auto;
+}
+.form-button input{
+  border: 1px solid #ccc;
+  background-color: var(--login-background-main);
+
+  color: var(--login-text-primary);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2em;
+  font-weight: 700;
+
+  margin: 15px auto;
+}
+
+
+.login-screen a {
+  text-decoration: none;
+  color:var(--login-text-primary);
+}
+
+
+.alert span {
+  color: var(--login-text-alert);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2em;
+}
+.alert button {
+  width: 200px;
+  height: 40px;
+
+  border: none;
+  border-radius: 10px;
+  background-color: var(--login-text-alert);
+  font-size: 1.2em;
+  color: #FFF;
+  margin: 0 auto 20px;
+}
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                      Config for PC (1200 - 1600)                   *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (max-width: 1600px) {
+  .login-container {
+    height: 85vh;
+  }
+
+  .close {
+    top: calc(7.5vh - 30px);
+  }
+
+  .login-container > div {
+    height: auto;
+    width: calc(80vw * 0.4);
+  }
+
+  .ilustration {
+    margin: 0 30px 0 0;
+  }
+  .ilustration img {
+    width: calc(80vw * 0.4);
+  }
+
+  .field-container form div {
+    grid-template-columns: 1fr 3fr;
+    margin: 10px 10%;
+  }
+
+  .field-container input {
+    width: 250px;
+  }
+
+}
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                          Config for Tablet                         *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (max-width: 1200px) {
+  .ilustration {
+    display: none;
+  }
+
+  .field-container form div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .field-container form  label {
+    margin-right: 10px;
+  }
+
+  .login-container > div {
+    height: auto;
+    width: calc(100vw * 0.5);
+  }
+}
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                      Config for smartphone                         *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (max-width: 750px) {
+  .login-container {
+    background: none;
+  }
+
+  .close {
+    background-color: var(--login-background-main);
+  }
+
+  .login-container > div {
+    height: auto;
+    width: 80vw;
+  }
+
+  .field-container form div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10%;
+  }
+
+  .field-container input {
+    width: 60vw;
+  }
+
+  .alert button {
+    width: 60vw;
+  }
+}
+
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
+*                   Config for small smartphone                      *
+/* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
+@media (max-width: 400px) {
+  .login-modal.enable {
+    height: 103vh
+  }
+  .login-modal {
+    width: 80vw;
+  }
+
+  .close {
+    right: 20px;
+    top: 10px;
+  }
+
+
+  .login-container {
+    font-size: 0.9em;
+  }
+  
+  .login-screen {
+    width: 90%;
+    margin: 20px auto 20px 5px;
+  }
+}

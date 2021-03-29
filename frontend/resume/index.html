@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../global.css">
   <link rel="stylesheet" href="resume.css">
   <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="login.css">
   
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet"> 
@@ -29,7 +30,7 @@
         </p> -->
         <ul>
           <li> <a href="../" class="current"> Home </a> </li>
-          <li> <a href="../login/">login</a> </li>
+          <li onclick="handleShowLogin()" > login </li>
         </ul>
       </nav>
 
@@ -176,6 +177,49 @@
 
   </section>
 
+  <section class="login-modal">
+    <div class="login-container">
+      <div class="ilustration">
+        <img src="../src/img/ilustration.svg" alt="">
+      </div>
+      
+      <div class="login-screen">
+        <h1>login</h1>
+        <p>bem vindo ao parara</p>
+        <div class="field-container">
+
+          <form action="">
+            <div class="user-container">
+              <label for="user">Usuário:</label>
+              <input type="text" id="user" name="user">
+            </div>
+            
+            <div class="password-container">
+              <label for="password">Senha:</label>
+              <input type="text" id="password" name="password">
+            </div>
+            
+            <div class="form-button">
+              <input type="submit" value="Acessar" class="form-button" OnClick="notification()">
+            </div>
+          </form>
+        </div>
+
+        <p>Não tem conta ainda? </p>
+        <a href="#" OnClick="notification()"> <p>Clique aqui e se registre</p> </a>
+        <div class="alert">
+          <span> Não é possível fazer login nem se cadastrar. <br>
+          O banco de dados ainda não foi criado / conectado</span>
+          <br>
+
+          <button type="button" onclick="handleShowLogin()">Voltar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="close" onclick="handleShowLogin()"> X </div>
+  </section>
+
   <footer>
     <p>Criado em 09/2020</p>
     <a href="https://brunoamaia.github.io/">
@@ -191,6 +235,7 @@
 
   <script type="text/javascript" src="../data.js"></script>
   <script src="dashboard.js"></script>
+  <script src="login.js"></script>
 
 </body>
 </html>

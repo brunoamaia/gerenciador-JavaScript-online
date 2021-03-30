@@ -145,8 +145,15 @@ function drawLine(array) {
 
   for (let i = 0; i<month.length-1; i++) {
     context.beginPath();
+
+    // begin and finish of line
     context.moveTo(xnormalized(array, i), ynormalized(array, i));
     context.lineTo(xnormalized(array, i+1), ynormalized(array, i+1));
+
+    // draw dot
+    //context.arc(x, y, radius, startAngle, endAngle, counterclockwise);
+    context.arc(xnormalized(array, i+1), ynormalized(array, i+1), 5, 0, 0.001, true);
+
     context.stroke();
   }
 }

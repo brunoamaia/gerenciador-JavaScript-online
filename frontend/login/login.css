@@ -8,9 +8,13 @@
   text-decoration: none;
 }    /* Soft Reset */
 
+
 body {
   background-color: #00B2BC;
-  height: 100vh;
+}
+
+section {
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -19,7 +23,6 @@ body {
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
 .background-image img {
   position: absolute;
-  height: 100vh;
   margin: 0;
   padding: 0;
   z-index: -1;
@@ -27,16 +30,23 @@ body {
 .background-image-01 {
   left: 0;
   top: 0;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  width: 50vh;
 }
 .background-image-02 {
   right: 0;
   top: 0;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  width: 50vh;
+
+}
+.background-image-03 {
+  left: 0;
+  bottom: 0;
+  width: 50vh;
+}
+.background-image-04 {
+  right: 0;
+  bottom: 0;
+  width: 25vh;
 }
 
 section {
@@ -110,10 +120,14 @@ section {
   font-family: 'Nunito', sans-serif;
   font-size: 1em;
 }
+.field-container input:focus {
+  outline: none;
+}
 
 .form-button {
   display: block !important;
   margin: 0 auto;
+  cursor: pointer;
 }
 .form-button input{
   border: 1px solid #ccc !important;
@@ -148,6 +162,7 @@ section {
   background-color: #7CB441;
 
   margin: 0 auto 20px;
+  cursor: pointer;
 }
 
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
@@ -227,7 +242,7 @@ section {
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
 *                   Config for small smartphone                      *
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # */
-@media (max-width: 400px) {
+@media (max-width: 470px) {
   .background-image img {
     display: none;
   }

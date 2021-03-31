@@ -105,24 +105,30 @@
   margin: 10px auto 15px;
 }
 
-.field-container form div {
-  display: grid; 
-  grid-template-columns: 4fr 5fr;
+.field-container form > div {
+  display: flex; 
   align-items: center;
-  margin: 10px 120px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
-.field-container label {
-  color: var(--login-text-primary);
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.1em;
+
+.field-container form div img {
+  padding: 6px 3px 6px 20px;
+  border: 2px solid #777;
+  border-right: none;
+  background-color: #CCC;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
+
 .field-container input {
   height: 40px;
   width: 280px;
   margin: 0;
 
-  border: none;
-  border-radius: 20px;
+  border: 2px solid #777;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 
   padding: 0 15px;
   font-family: 'Nunito', sans-serif;
@@ -142,9 +148,14 @@
   font-size: 1.2em;
   font-weight: 700;
 
+  border-radius: 20px;
   margin: 15px auto;
+  width: 150px;
+  cursor: pointer;
 }
-
+.field-container form input:focus {
+  outline: none;
+}
 
 .login-screen a {
   text-decoration: none;
@@ -158,7 +169,7 @@
   font-size: 1.2em;
 }
 .alert button {
-  width: 200px;
+  width: 150px;
   height: 40px;
 
   border: none;
@@ -167,6 +178,7 @@
   font-size: 1.2em;
   color: #FFF;
   margin: 0 auto 20px;
+  cursor: pointer;
 }
 
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
@@ -193,15 +205,13 @@
     width: calc(80vw * 0.4);
   }
 
-  .field-container form div {
-    grid-template-columns: 1fr 3fr;
-    margin: 10px 10%;
-  }
-
   .field-container input {
     width: 250px;
   }
 
+  .form-button  input {
+    width: 150px;
+  }
 }
 
 /* # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # * # *
@@ -210,12 +220,6 @@
 @media (max-width: 1200px) {
   .ilustration {
     display: none;
-  }
-
-  .field-container form div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .field-container form  label {
@@ -245,14 +249,11 @@
     width: 80vw;
   }
 
-  .field-container form div {
-    display: flex;
-    flex-direction: column;
-    margin: 10px 10%;
-  }
-
   .field-container input {
     width: 60vw;
+  }
+  .form-button  input {
+    width: 40vw;
   }
 
   .alert button {

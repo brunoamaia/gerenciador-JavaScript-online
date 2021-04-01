@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../global.css">
   <link rel="stylesheet" href="resume.css">
   <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="dashboard2.css">
   <link rel="stylesheet" href="login.css">
   
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"> 
@@ -17,7 +18,7 @@
 
   <title>Produção</title>
 </head>
-<body onresize="resized()">
+<body onresize="resized(), resizeDinamicGraphic()">
   <header class="header">
     <div class="content">
       <!-- <a href="" class="nav-toggle" onclick="openmenu()">
@@ -46,6 +47,8 @@
       </nav> -->
     </div>
   </header>
+
+  <section class="animated-graphic dashboard"></section>
 
   <section class="dashboard">
     <h1>Painel de vizualização (V.2)</h1>
@@ -113,8 +116,8 @@
                 src="../src/img/icons/more-vertical.svg"
                 alt=""
               >
-            </div>
-          </button>
+              </div>
+            </button>
           <div class="graphic-order-history">
             <canvas id="graphic-order"></canvas>
           </div>
@@ -235,6 +238,7 @@
 
   <script type="text/javascript" src="../data.js"></script>
   <script src="dashboard.js"></script>
+  <script src="dashboard2.js"></script>
   <script src="login.js"></script>
 
 </body>

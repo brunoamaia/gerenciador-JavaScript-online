@@ -1,5 +1,8 @@
 .view-data {
-  font-size: 28px;
+  font-size: 23px;
+}
+.view-data span {
+  margin: 0 10px;
 }
 
 #dinamic-graphic {

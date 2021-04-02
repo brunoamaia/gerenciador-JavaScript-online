@@ -28,7 +28,12 @@ var ctx = animatedGraph.getContext("2d");
 function updateData() {
   dinamicData.push(Number(Math.random().toFixed(2)))
   dinamicData.shift()
-  document.querySelector('.view-data').innerHTML = dinamicData
+
+  let text = ''
+  for(let i = 0; i < dinamicData.length; i++) {
+      text += `<span> ${dinamicData[i]} </span>`
+  }
+  document.querySelector('.view-data').innerHTML = text
 
   // setTimeout(updateData, 1000)
 }
@@ -37,12 +42,14 @@ updateData()
 
 const graphAnimatedArea = {
   xlab: dimensions.width  * 0.001,
-  xmin: dimensions.width  * 0.05,
-  xmax: dimensions.width  * 0.95,
+  xmin: 45,
+  xmax: dimensions.width  * 0.91,
   ylab: dimensions.height * 0.98,
   ymin: dimensions.height * 0.85,
   ymax: dimensions.height * 0.1
 }
+var xposition = 0
+var screenArea = (graphAnimatedArea.xmax - graphAnimatedArea.xmin)/label.length
 
 function xnormalized(array, position) {
   let value = graphAnimatedArea.xmin + (position * (graphAnimatedArea.xmax-graphAnimatedArea.xmin))/(array.length-1)
@@ -92,7 +99,7 @@ function yLabelGaphAnimated(array = [0, 1]) {
   ctx.textAlign = "start"
   ctx.font = '14px Nunito';
 
-  let xlabel = ['  0,0', '  0,25', '  0,50', '  0,75', '  1,00'];
+  let xlabel = [' 0,0', ' 0,25', ' 0,50', ' 0,75', ' 1,00'];
   let yjump = (graphAnimatedArea.ymin - graphAnimatedArea.ymax)/(xlabel.length-1);
 
   for (let i = 0; i < xlabel.length; i++) {
@@ -110,27 +117,40 @@ function resizeDinamicGraphic() {
   drawGraphAnimated()
 }
 
+function frameBorder() {
+  ctx.fillStyle = '#043946'
+  ctx.fillRect(0, 0, graphAnimatedArea.xmin, graphAnimatedArea.ymin+5);
+  ctx.fillRect(graphAnimatedArea.xmax+15, 0, screen.width, graphAnimatedArea.ymin+5);
+
+}
+
 function updateGraph(xlabel, ydata) {
   ctx.strokeStyle = '#EFB92E'
   ctx.lineWidth = 5;
   ctx.lineCap = 'round';
 
-  for (let i = 0; i<label.length; i++) {
+  for (let i = 0; i<ydata.length; i++) {
     // begin and finish of line
     ctx.beginPath();
-    ctx.moveTo(xnormalized(xlabel, i), ynormalized(ydata, i));
-    ctx.lineTo(xnormalized(xlabel, i+1), ynormalized(ydata, i+1));
+    ctx.moveTo(xnormalized(xlabel, i)+xposition, ynormalized(ydata, i));
+    ctx.lineTo(xnormalized(xlabel, i+1)+xposition, ynormalized(ydata, i+1));
     ctx.stroke();
   }
 }
 
-let position = 10;
-
 function drawGraphAnimated() {
+  ctx.clearRect(0, 0, screen.width, screen.height);
   updateGraph(label, dinamicData)
+  frameBorder()
   xLabelGaphAnimated(label)
   yLabelGaphAnimated(dinamicData)
-  
+
+  xposition -= screenArea/20
+  if ( Math.abs(xposition ) > screenArea) {
+    updateData()
+    xposition = 0
+  }
+  setTimeout(drawGraphAnimated, 100)
 }
 
 drawGraphAnimated()

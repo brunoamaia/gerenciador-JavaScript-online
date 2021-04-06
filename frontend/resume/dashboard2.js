@@ -19,7 +19,7 @@ document.querySelector('.animated-graphic').innerHTML = ajax.responseText
 
 // Insert canvas (id of html element inserted)
 document.querySelector('.graphic-frame').innerHTML = `
-<canvas id="dinamic-graphic" height="${screen.height}" width="${screen.width}"></canvas>
+  <canvas id="dinamic-graphic" height="${screen.height}" width="${screen.width}"></canvas>
 `
 var animatedGraph = document.getElementById("dinamic-graphic");
 var ctx = animatedGraph.getContext("2d");
@@ -34,29 +34,38 @@ function updateData() {
       text += `<span> ${dinamicData[i]} </span>`
   }
   document.querySelector('.view-data').innerHTML = text
-
-  // setTimeout(updateData, 1000)
 }
 updateData()
 
+// control of timer
+var timer;
+
+function startTimer() {
+  timer = setTimeout(drawGraphAnimated, 300);
+}
+
+function stopTimer() {
+  clearTimeout(timer);
+}
+
 
 const graphAnimatedArea = {
-  xlab: dimensions.width  * 0.001,
+  xlab: screen.width  * 0.001,
   xmin: 45,
-  xmax: dimensions.width  * 0.91,
-  ylab: dimensions.height * 0.98,
-  ymin: dimensions.height * 0.85,
-  ymax: dimensions.height * 0.1
+  xmax: screen.width  * 0.91,
+  ylab: screen.height * 0.98,
+  ymin: screen.height * 0.85,
+  ymax: screen.height * 0.1
 }
 var xposition = 0
 var screenArea = (graphAnimatedArea.xmax - graphAnimatedArea.xmin)/label.length
 
-function xnormalized(array, position) {
+function xregulated(array, position) {
   let value = graphAnimatedArea.xmin + (position * (graphAnimatedArea.xmax-graphAnimatedArea.xmin))/(array.length-1)
   return value
 } 
 
-function ynormalized(array, position) {
+function yregulated(array, position) {
   let value = graphAnimatedArea.ymin - (array[position] * (graphAnimatedArea.ymin-graphAnimatedArea.ymax))/1
   return value 
 }
@@ -80,7 +89,7 @@ function xLabelGaphAnimated(array) {
   ctx.font = '14px Nunito';
 
   for (let i = 0; i <= array.length; i++) {
-    ctx.fillText(array[i], xnormalized(array, i), graphAnimatedArea.ylab);
+    ctx.fillText(array[i], xregulated(array, i), graphAnimatedArea.ylab);
   }
   ctx.setLineDash([]);
 
@@ -110,11 +119,26 @@ function yLabelGaphAnimated(array = [0, 1]) {
 }
 
 function resizeDinamicGraphic() {
+  stopTimer()
+  stopTimer()
+
+  screen.height = 250
   screen.width = window.innerWidth * 0.9
-  ctx.height = screen.height
-  ctx.width = screen.width
+
+  graphAnimatedArea.xlab = screen.width  * 0.001
+  graphAnimatedArea.xmin = 45
+  graphAnimatedArea.xmax = screen.width  * 0.91
+  graphAnimatedArea.ylab = screen.height * 0.98
+  graphAnimatedArea.ymin = screen.height * 0.85
+  graphAnimatedArea.ymax = screen.height * 0.1
+
+  document.querySelector('.graphic-frame').innerHTML = `
+    <canvas id="dinamic-graphic" height="${screen.height}" width="${screen.width}"></canvas>
+  `
+  animatedGraph = document.getElementById("dinamic-graphic");
+  ctx = animatedGraph.getContext("2d");
   
-  drawGraphAnimated()
+  startTimer()
 }
 
 function frameBorder() {
@@ -132,8 +156,8 @@ function updateGraph(xlabel, ydata) {
   for (let i = 0; i<ydata.length; i++) {
     // begin and finish of line
     ctx.beginPath();
-    ctx.moveTo(xnormalized(xlabel, i)+xposition, ynormalized(ydata, i));
-    ctx.lineTo(xnormalized(xlabel, i+1)+xposition, ynormalized(ydata, i+1));
+    ctx.moveTo(xregulated(xlabel, i)+xposition, yregulated(ydata, i));
+    ctx.lineTo(xregulated(xlabel, i+1)+xposition, yregulated(ydata, i+1));
     ctx.stroke();
   }
 }
@@ -150,7 +174,7 @@ function drawGraphAnimated() {
     updateData()
     xposition = 0
   }
-  setTimeout(drawGraphAnimated, 100)
+  startTimer()
 }
 
-drawGraphAnimated()
+startTimer()

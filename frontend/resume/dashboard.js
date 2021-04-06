@@ -41,7 +41,7 @@ var graphicOrder = document.getElementById("graphic-order");
 var context = graphicOrder.getContext("2d");
 
 function updateSizeGraph() {
-  graphArea.xini = dimensions.width  * 0.001,
+  graphArea.xini = dimensions.width  * 0.001
   graphArea.xmin = dimensions.width * 0.1
   graphArea.xmax = dimensions.width * 0.95
   graphArea.yini = dimensions.height * 0.98

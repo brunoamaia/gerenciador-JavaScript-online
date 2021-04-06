@@ -41,7 +41,7 @@ updateData()
 var timer;
 
 function startTimer() {
-  timer = setTimeout(drawGraphAnimated, 300);
+  timer = setTimeout(drawGraphAnimated, 100);
 }
 
 function stopTimer() {

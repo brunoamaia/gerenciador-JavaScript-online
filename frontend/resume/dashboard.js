@@ -110,7 +110,7 @@ function drawRoundedRectangle(xinit) {
   context.fillText(month[position], xinit + 55, yinit+28)
 
   context.font = '14px Nunito';
-  context.fillText(`Pedidos: ${orderData[position]}`, xinit + 60, yinit+55)
+  context.fillText(`Pedidos: $${orderData[position]},00`, xinit + 70, yinit+55)
 }
 
 
@@ -118,10 +118,6 @@ var yMinForExit = undefined
 var yscroll = 0
 
 function disp(event) {
-  document.querySelector('.coordinates').innerHTML = `
-  X = ${event.clientX - graphicOrder.offsetLeft} <br>
-  Y = ${event.clientY}
-  `
   let scrollnow = window.scrollY
   if (scrollnow !== yscroll) {
     yMinForExit = undefined
@@ -292,8 +288,6 @@ function pointsGraphi(array) {
   for (let i = 0; i < pointsValueY.length; i++) {
     textY += ` <span> ${pointsValueY[i]} </span> `
   }
-
-  document.querySelector('.points').innerHTML = `${textX} <br> ${textY}`
 }
 
 function drawGraphicOrder() {

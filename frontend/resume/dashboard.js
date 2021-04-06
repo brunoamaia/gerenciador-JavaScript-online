@@ -44,10 +44,50 @@ graphicOrder.addEventListener("mousemove", function (event) {
   disp(event)
 }, false);
 
-function drawRoundedRectangle(xinit, yinit) {
+var positionDescription = 0
+function drawRoundedRectangle(xinit) {
+  let yinit = 100
   let radius = 10
   let width = 160
   let height = 70
+
+  let position = 0
+  for (let i = 0; i < divisions.length; i++) {
+    if (xinit > divisions[i]) {
+      position = i + 1
+    }
+  }
+
+  if (position !== positionDescription) {
+    positionDescription = position
+    drawGraphicOrder()
+  }
+
+  let newy = ynormalized(orderData, position)
+
+  if (newy > dimensions.height / 2) {
+    yinit = newy - height - 20
+    xinit = pointsValueX[position]
+  } else {
+    yinit = newy + 20
+    xinit = pointsValueX[position]
+  }
+
+
+  let positionX = 'botton'
+  if (xinit < (graphArea.xmin + width / 2)) {
+    xinit = graphArea.xmin - 20
+  } else if (xinit > (graphArea.xmax - width / 2)) {
+    xinit = graphArea.xmax - (width - 20)
+  } else {
+    xinit = xinit - width / 2
+  }
+
+  // Insert frame
+  context.fillStyle = '#043946'
+  context.strokeStyle = '#FFF'
+  context.lineWidth = 3;
+  context.lineCap = 'round';
 
   context.fillRect(xinit + 2, yinit + 2, width - 4, height - 4);
 
@@ -62,6 +102,15 @@ function drawRoundedRectangle(xinit, yinit) {
   context.lineTo(xinit + radius, yinit);
   context.quadraticCurveTo(xinit, yinit, xinit, yinit + radius);
   context.stroke();
+
+
+  // insert text
+  context.fillStyle = '#FFF'
+  context.font = '20px Nunito';
+  context.fillText(month[position], xinit + 55, yinit+28)
+
+  context.font = '14px Nunito';
+  context.fillText(`Pedidos: ${orderData[position]}`, xinit + 60, yinit+55)
 }
 
 
@@ -78,7 +127,7 @@ function disp(event) {
     yMinForExit = undefined
     yscroll = scrollnow
   }
-  
+
   let ynow = event.clientY
   if (yMinForExit == undefined) {
     yMinForExit = ynow
@@ -88,26 +137,22 @@ function disp(event) {
 
   let exitGraph = false
   if ((event.clientX - graphicOrder.offsetLeft) < 50 ||
-    (event.clientX - graphicOrder.offsetLeft) > graphArea.xmax ||
-    ynow < yMinForExit+10 || ynow > yMinForExit+240
+    (event.clientX - graphicOrder.offsetLeft) > (graphArea.xmax + 20) ||
+    ynow < yMinForExit + 10 || ynow > yMinForExit + 240
   ) {
     exitGraph = true
   }
 
-  context.fillStyle = '#043946'
-  context.strokeStyle = '#FFF'
-  context.lineWidth = 1;
-  context.lineCap = 'round';
-
   if (exitGraph) {
     drawGraphicOrder()
   } else {
-    drawRoundedRectangle(graphArea.xmin, graphArea.ymax)
+    drawRoundedRectangle(event.clientX - graphicOrder.offsetLeft)
   }
 }
 
 var pointsValueX = []
 var pointsValueY = []
+var divisions = []
 
 function updateSizeGraph() {
   graphArea.xini = dimensions.width * 0.001
@@ -259,6 +304,10 @@ function drawGraphicOrder() {
   yAxis()
   ylabel(month, gridy)
   drawLine(orderData)
+
+  for (let i = 0; i < pointsValueX.length - 1; i++) {
+    divisions[i] = (Number(pointsValueX[i]) + Number(pointsValueX[i + 1])) / 2
+  }
 
   pointsGraphi(orderData)
 }

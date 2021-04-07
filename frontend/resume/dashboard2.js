@@ -37,28 +37,30 @@ function updateData() {
 }
 updateData()
 
+const graphAnimatedArea = {
+  xlab: screen.width  * 0.001,
+  xmin: 45,
+  xmax: screen.width  * 0.95,
+  ylab: screen.height * 0.98,
+  ymin: screen.height * 0.85,
+  ymax: screen.height * 0.1
+}
+
+var xposition = 0
+var screenArea = (graphAnimatedArea.xmax - graphAnimatedArea.xmin)/label.length
+
 // control of timer
 var timer;
+var framesPerSecond = 30
+var att = 1200/framesPerSecond
 
 function startTimer() {
-  timer = setTimeout(drawGraphAnimated, 100);
+  timer = setTimeout(drawGraphAnimated, att);
 }
 
 function stopTimer() {
   clearTimeout(timer);
 }
-
-
-const graphAnimatedArea = {
-  xlab: screen.width  * 0.001,
-  xmin: 45,
-  xmax: screen.width  * 0.91,
-  ylab: screen.height * 0.98,
-  ymin: screen.height * 0.85,
-  ymax: screen.height * 0.1
-}
-var xposition = 0
-var screenArea = (graphAnimatedArea.xmax - graphAnimatedArea.xmin)/label.length
 
 function xregulated(array, position) {
   let value = graphAnimatedArea.xmin + (position * (graphAnimatedArea.xmax-graphAnimatedArea.xmin))/(array.length-1)
@@ -127,7 +129,7 @@ function resizeDinamicGraphic() {
 
   graphAnimatedArea.xlab = screen.width  * 0.001
   graphAnimatedArea.xmin = 45
-  graphAnimatedArea.xmax = screen.width  * 0.91
+  graphAnimatedArea.xmax = screen.width  * 0.95
   graphAnimatedArea.ylab = screen.height * 0.98
   graphAnimatedArea.ymin = screen.height * 0.85
   graphAnimatedArea.ymax = screen.height * 0.1
@@ -169,8 +171,8 @@ function drawGraphAnimated() {
   xLabelGaphAnimated(label)
   yLabelGaphAnimated(dinamicData)
 
-  xposition -= screenArea/20
-  if ( Math.abs(xposition ) > screenArea) {
+  xposition -= screenArea/(framesPerSecond-10)
+  if ( Math.abs(xposition) >= screenArea+19) {
     updateData()
     xposition = 0
   }

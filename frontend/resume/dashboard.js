@@ -33,7 +33,8 @@ function xnormalized(array, position) {
 }
 
 function ynormalized(array, position) {
-  let value = graphArea.ymin - (array[position] * (graphArea.ymin - graphArea.ymax)) / Math.max(...array)
+  // let value = graphArea.ymin - (array[position] * (graphArea.ymin - graphArea.ymax)) / Math.max(...array)
+  let value = graphArea.ymin - (array[position] * (graphArea.ymin - graphArea.ymax)) / 35000
   return value
 }
 
@@ -44,12 +45,38 @@ graphicOrder.addEventListener("mousemove", function (event) {
   disp(event)
 }, false);
 
+function formatNumber(value, decimals = false) {
+  let decimal = '.00'
+  if (String(value).split('.').length > 1) {
+    decimal = '.' + String(value).split('.')[1]
+  }
+
+  let newValue = String(value).split('.')[0]
+  newValue = newValue.split('')
+  for (let i = 1; i < newValue.length; i++) {
+    if (i % 3 === 0) {
+      newValue[newValue.length - i] = '.' + newValue[newValue.length - i]
+    }
+  }
+
+  let final = ''
+  for (let i = 0; i < newValue.length; i++) {
+    final += newValue[i]
+  }
+
+  if (decimals) {
+    final += decimal
+  }
+
+  return final
+}
+
 var positionDescription = 0
 function drawRoundedRectangle(xinit) {
   let yinit = 100
   let radius = 10
   let width = 160
-  let height = 70
+  let height = 90
 
   let position = 0
   for (let i = 0; i < divisions.length; i++) {
@@ -74,7 +101,6 @@ function drawRoundedRectangle(xinit) {
   }
 
 
-  let positionX = 'botton'
   if (xinit < (graphArea.xmin + width / 2)) {
     xinit = graphArea.xmin - 20
   } else if (xinit > (graphArea.xmax - width / 2)) {
@@ -86,10 +112,10 @@ function drawRoundedRectangle(xinit) {
   // Insert frame
   context.fillStyle = '#043946'
   context.strokeStyle = '#FFF'
-  context.lineWidth = 3;
-  context.lineCap = 'round';
+  context.lineWidth = 3
+  context.lineCap = 'round'
 
-  context.fillRect(xinit + 2, yinit + 2, width - 4, height - 4);
+  context.fillRect(xinit + 2, yinit + 2, width - 4, height - 4)
 
   context.beginPath();
   context.moveTo(xinit, yinit + radius);
@@ -106,11 +132,17 @@ function drawRoundedRectangle(xinit) {
 
   // insert text
   context.fillStyle = '#FFF'
+  context.textAlign = "start"
+
   context.font = '20px Nunito';
-  context.fillText(month[position], xinit + 55, yinit+28)
+  context.fillText(month[position], xinit + 15, yinit + 25)
 
   context.font = '14px Nunito';
-  context.fillText(`Pedidos: $${orderData[position]},00`, xinit + 70, yinit+55)
+  let text = formatNumber(orderData[position], false)
+  context.fillText(`Pedidos: ${text}`, xinit + 15, yinit + 50)
+
+  text = formatNumber(produced[position], false)
+  context.fillText(`Meta: ${text}`, xinit + 15, yinit + 70)
 }
 
 
@@ -167,9 +199,9 @@ function resizeGraphic() {
   graphicOrder.width = dimensions.width - 10
 }
 
-function xAxis() {
+function yAxis() {
   context.strokeStyle = '#FFF'
-  context.lineWidth = 2;
+  context.lineWidth = 3;
   context.lineCap = 'round';
 
   context.beginPath();
@@ -178,7 +210,7 @@ function xAxis() {
   context.stroke();
 }
 
-function xlabel(array, lines, grid = true) {
+function yLabel(array, lines, grid = true) {
   context.fillStyle = '#FFF'
   context.textAlign = "start"
   context.font = '14px Nunito';
@@ -204,7 +236,9 @@ function xlabel(array, lines, grid = true) {
 
   for (let i = 0; i <= lines; i++) {
     let value = (isfloat) ? label[i - 1].toFixed(2) : label[i]
-    context.fillText(`$ ${value}`, graphArea.xini, (graphArea.ymin - yjump * i) + 5, maxWidth);
+    
+    value = formatNumber(value, false)
+    context.fillText(` ${value}`, graphArea.xini, (graphArea.ymin - yjump * i) + 5, maxWidth);
 
     if (grid && i > 0) {
       context.beginPath();
@@ -215,24 +249,21 @@ function xlabel(array, lines, grid = true) {
     }
   }
   context.setLineDash([]);
-
-
 }
 
-function yAxis() {
-  // context.strokeStyle = '#FAFAFA'
+function xAxis() {
+  context.strokeStyle = '#FAFAFA'
+  context.lineWidth = 3;
   context.beginPath();
   context.moveTo(graphArea.xmin, graphArea.ymin);
   context.lineTo(graphArea.xmin, graphArea.ymax - 14);
   context.stroke();
 }
 
-function ylabel(array, grid = true) {
-  // context.fillStyle = '#FAFAFA'
+function xLabel(array, grid = true) {
+  context.fillStyle = '#FAFAFA'
   context.textAlign = "center"
   context.font = '14px Nunito';
-
-  let jump = (graphArea.xmax - graphArea.xini - (array.length * 5)) / array.length
 
   for (let i = 0; i < array.length; i++) {
     context.fillText(array[i].slice(0, 3), xnormalized(array, i), graphArea.yini);
@@ -248,62 +279,55 @@ function ylabel(array, grid = true) {
   context.setLineDash([]);
 }
 
-function drawLine(array) {
-  context.strokeStyle = '#EFB92E'
+function drawLine(array, color) {
+  context.strokeStyle = color
   context.lineWidth = 5;
   context.lineCap = 'round';
 
   for (let i = 0; i < month.length - 1; i++) {
-    context.beginPath();
-
     // begin and finish of line
+    context.beginPath();
     context.moveTo(xnormalized(array, i), ynormalized(array, i));
     context.lineTo(xnormalized(array, i + 1), ynormalized(array, i + 1));
+    context.stroke();
 
     // draw dot
     //context.arc(x, y, radius, startAngle, endAngle, counterclockwise);
     if (i === 0) {
+      context.beginPath();
       context.arc(xnormalized(array, i), ynormalized(array, i), 5, 0, 0.001, true);
+      context.stroke();
+
       pointsValueX[i] = xnormalized(array, i).toFixed(2)
       pointsValueY[i] = ynormalized(array, i).toFixed(2)
     }
+
+    context.beginPath();
     context.arc(xnormalized(array, i + 1), ynormalized(array, i + 1), 5, 0, 0.001, true);
+    context.stroke();
+
     pointsValueX[i + 1] = xnormalized(array, i + 1).toFixed(2)
     pointsValueY[i + 1] = ynormalized(array, i + 1).toFixed(2)
 
-    context.stroke();
   }
 }
 
-var gridx = true
-var gridy = false
-
-function pointsGraphi(array) {
-  let textX = ''
-  let textY = ''
-
-  for (let i = 0; i < pointsValueX.length; i++) {
-    textX += ` <span> ${pointsValueX[i]} </span> `
-  }
-  for (let i = 0; i < pointsValueY.length; i++) {
-    textY += ` <span> ${pointsValueY[i]} </span> `
-  }
-}
+var gridH = true
+var gridV = false
 
 function drawGraphicOrder() {
   resizeGraphic()
 
   xAxis()
-  xlabel(orderData, 5, gridx)
+  xLabel(month, gridV)
   yAxis()
-  ylabel(month, gridy)
-  drawLine(orderData)
+  yLabel(orderData, 5, gridH)
+  drawLine(produced, '#7CB441')
+  drawLine(orderData, '#4449F4')
 
   for (let i = 0; i < pointsValueX.length - 1; i++) {
     divisions[i] = (Number(pointsValueX[i]) + Number(pointsValueX[i + 1])) / 2
   }
-
-  pointsGraphi(orderData)
 }
 
 drawGraphicOrder()
@@ -322,9 +346,9 @@ function handleEnableElements() {
 }
 
 function handleChangeGridH() {
-  gridx = !gridx
+  gridH = !gridH
   drawGraphicOrder()
-  if (gridx) {
+  if (gridH) {
     window.document.querySelector('.markA').classList.add('on')
   } else {
     window.document.querySelector('.markA').classList.remove('on')
@@ -332,9 +356,9 @@ function handleChangeGridH() {
 }
 
 function handleChangeGridV() {
-  gridy = !gridy
+  gridV = !gridV
   drawGraphicOrder()
-  if (gridy) {
+  if (gridV) {
     window.document.querySelector('.markB').classList.add('on')
   } else {
     window.document.querySelector('.markB').classList.remove('on')
